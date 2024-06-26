@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproducción automática de video de YouTube</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #player {
+      width: 100%;
+      height: 100%;
+      max-width: 560px;
+      max-height: 315px;
+    }
+  </style>
+</head>
+<body>
+  <!-- El reproductor de video de YouTube se insertará en este div -->
+  <div id="player"></div>
+
+  <script>
+    // Función que se ejecuta cuando la API de YouTube está lista
+    function onYouTubeIframeAPIReady() {
+      // Crea un nuevo reproductor de YouTube
+      var player = new YT.Player('player', {
+        height: '315', // Altura del reproductor
+        width: '560', // Ancho del reproductor
+        videoId: 'mCdA4bJAGGk', // ID del video de YouTube
+        playerVars: {
+          'autoplay': 1,    // Reproducir automáticamente cuando se carga el reproductor
+          'controls': 1,    // Mostrar controles del reproductor
+          'enablejsapi': 1, // Habilitar la API JavaScript
+          'mute': 0         // Activar el sonido del video
+        },
+        events: {
+          'onReady': onPlayerReady // Función que se ejecuta cuando el reproductor está listo
+        }
+      });
+    }
+
+    // Función que se ejecuta cuando el reproductor está listo
+    function onPlayerReady(event) {
+      event.target.playVideo(); // Iniciar la reproducción del video automáticamente
+      event.target.unMute();   // Asegurar que el video no esté silenciado
+    }
+  </script>
+
+  <!-- Incluir el script de la API de YouTube -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+</body>
+</html>
