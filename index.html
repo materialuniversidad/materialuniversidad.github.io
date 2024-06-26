@@ -38,7 +38,7 @@
           'autoplay': 1,    // Reproducir automáticamente cuando se carga el reproductor
           'controls': 1,    // Mostrar controles del reproductor
           'enablejsapi': 1, // Habilitar la API JavaScript
-          'mute': 0         // Activar el sonido del video
+          'mute': 0         // Asegurar que el sonido esté activado
         },
         events: {
           'onReady': onPlayerReady // Función que se ejecuta cuando el reproductor está listo
@@ -49,7 +49,7 @@
     // Función que se ejecuta cuando el reproductor está listo
     function onPlayerReady(event) {
       event.target.playVideo(); // Iniciar la reproducción del video automáticamente
-      event.target.unMute();   // Asegurar que el video no esté silenciado
+      event.target.unMute();    // Asegurar que el video no esté silenciado
     }
   </script>
 
